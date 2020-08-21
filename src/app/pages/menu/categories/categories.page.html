@@ -1,0 +1,77 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-button fill="clear" color="light" slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-button>
+    <ion-title>
+      E-Location
+    </ion-title>
+    <ion-button fill="clear" color="light" slot="end">
+      <ion-icon name="cart-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+    <ion-toolbar color="primary">
+      <ion-searchbar showCancelButton="focus"></ion-searchbar>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true" padding>
+
+  <ion-refresher slot="fixed">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
+
+  
+
+  <!-- <div id="container"> -->
+
+    <ion-list-header lines="inset">
+      <ion-label>Recents</ion-label>
+      <ion-button>Voir tout</ion-button>
+    </ion-list-header>
+
+    <ion-list>
+      <ion-item button *ngFor="let article of articles" (click) = "goToArticleDetails(article)">
+        <ion-thumbnail slot="start">
+          <img src="{{article.img[0]}}" alt=" {{article.categorie}} ">
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{article.categorie}}</h2>
+          <p>{{article.cite.name}}</p>
+          <!-- <p>{{article.type}}</p> -->
+          <p> {{article.quartier}} - {{article.ville}} </p>
+          <p>
+            <span *ngIf="article.note >=1">
+              <ion-icon class="iconYellow" name="star"></ion-icon>
+            </span>
+            <span *ngIf="article.note >=2">
+              <ion-icon class="iconYellow" name="star"></ion-icon>
+            </span>
+            <span *ngIf="article.note >=3">
+              <ion-icon class="iconYellow" name="star"></ion-icon>
+            </span>
+            <span *ngIf="article.note >=4">
+              <ion-icon class="iconYellow" name="star"></ion-icon>
+            </span>
+            <span *ngIf="article.note >=5">
+              <ion-icon class="iconYellow" name="star"></ion-icon>
+            </span>
+          </p>
+          <!-- <p>{{article.creerLe}}</p> -->
+        </ion-label>
+        <ion-label class="ion-text-end">
+            <h2><strong>{{article.prix}} Fcfa</strong></h2>
+            <p>{{article.type}}</p>
+            <!-- <a><h5>Voir plus</h5></a> -->
+        </ion-label>
+        
+      
+        <!-- <p> {{article.creerLe}} </p> -->
+        <!-- {{article.prix | currency:'XAF':true}} -->
+      </ion-item>
+    </ion-list>
+  <!-- </div> -->
+</ion-content>
+
